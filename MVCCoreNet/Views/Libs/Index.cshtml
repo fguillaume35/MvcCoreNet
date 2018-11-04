@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MVCCoreNet.Models.Lib>
+
+@{
+    ViewData["Title"] = "Accueil - Environnements et librairies";
+    var idCreate = 0;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@idCreate"class="btn btn-primary" asp->Ajouter</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categorie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie.Nom)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdLib" class="btn btn-primary btn-xs">Editer</a>
+                <a asp-action="Details" asp-route-id="@item.IdLib" class="btn btn-info btn-xs">Détail</a>
+                <a asp-action="Delete" asp-route-id="@item.IdLib" class="btn btn-danger btn-xs">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

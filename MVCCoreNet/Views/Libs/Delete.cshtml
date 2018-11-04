@@ -1,0 +1,37 @@
+﻿@model MVCCoreNet.Models.Lib
+
+@{
+    ViewData["Title"] = "Suppression - Environnements et librairies";
+    var msg = "Supprimer cet enregistrement ?";
+}
+
+<div>
+    <h4>@msg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Categorie) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Categorie.Nom)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdLib" />
+        <a asp-action="Index" class="btn btn-primary">Retour</a>
+        <input type="submit" value="Supprimer" class="btn btn-success" />
+    </form>
+</div>
